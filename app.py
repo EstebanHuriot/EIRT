@@ -15,8 +15,10 @@ if image is not None:
     try:
         res = DeepFace.analyze(frame, actions=["emotion"], enforce_detection=False)
         result = res[0] if isinstance(res, list) else res
+        
         emotion = result.get('dominant_emotion')
         confidence = result.get('face_confidence')
+        
         st.write("Emotion:", emotion)
         st.write("Confidence:", confidence)
         st.bar_chart(result["emotion"])
